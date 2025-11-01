@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <h1>Edit Apartment</h1>
+
+  <form method="post">
+    <label>Unit Number:
+      <input type="text" name="unit_number" value="{{ unit_number or apartment.unit_number }}">
+    </label><br><br>
+
+    <label>Building Name:
+      <input type="text" name="building_name" value="{{ building_name or apartment.building_name }}">
+    </label><br><br>
+
+    <label>Rent:
+      <input type="text" name="rent" value="{{ rent or apartment.rent }}">
+    </label><br><br>
+
+    <button type="submit">Update Apartment</button>
+  </form>
+
+  <p><a href="{{ url_for('list_apartments') }}">Back to Apartments</a></p>
+{% endblock %}

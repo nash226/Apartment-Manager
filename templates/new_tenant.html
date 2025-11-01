@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <h1>Add Tenant</h1>
+
+  <form method="post">
+    <label>Name:
+      <input type="text" name="name" value="{{ tenant_name or '' }}">
+    </label><br><br>
+
+    <label>Apartment:
+      <select name="apartment_id">
+        {% for apt in apartments %}
+          <option value="{{ apt.id }}"
+              {% if apartment_id == apt.id %}selected{% endif %}>
+            {{ apt.building_name }} - Unit {{ apt.unit_number }}
+          </option>
+       {% endfor %}
+     </select>
+    </label><br><br>
+
+    <button type="submit">Add Tenant</button>
+  </form>
+  
+  <p><a href="{{ url_for('list_apartments') }}">Back to Apartments</a></p>
+  <p><a href="{{ url_for('list_tenants') }}">Back to Tenants</a></p>
+{% endblock %}
